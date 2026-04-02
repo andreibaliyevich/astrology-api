@@ -192,15 +192,21 @@ def build_natal_chart(
 
     jd = calculate_julian_day(date_time)
 
-    planets = calculate_planets(jd)
     houses, ascendant, midheaven = calculate_houses(jd, latitude, longitude)
 
+    ascendant_sign, _ = get_sign(ascendant)
+    midheaven_sign, _ = get_sign(midheaven)
+
+    planets = calculate_planets(jd)
     assign_houses(planets, houses)
+
     aspects = calculate_aspects(planets)
 
     return NatalChart(
         ascendant=ascendant,
+        ascendant_sign=ascendant_sign,
         midheaven=midheaven,
+        midheaven_sign=midheaven_sign,
         house1=houses[0],
         house2=houses[1],
         house3=houses[2],

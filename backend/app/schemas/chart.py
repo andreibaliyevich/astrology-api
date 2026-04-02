@@ -5,7 +5,10 @@ from app.schemas.planet import PlanetPosition
 
 class NatalChart(BaseModel):
     ascendant: float
+    ascendant_sign: str
+
     midheaven: float
+    midheaven_sign: str
 
     house1: float
     house2: float
