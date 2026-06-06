@@ -1,10 +1,11 @@
 from typing import Annotated
+
 from fastapi import APIRouter, Body
+
 from app.schemas.birth import BirthInfo
 from app.schemas.chart import NatalChart
 from app.schemas.compatibility import CompatibilityCharts, CompatibilityInfo
 from app.services.chart import ChartService
-
 
 router = APIRouter(
     prefix="/charts",

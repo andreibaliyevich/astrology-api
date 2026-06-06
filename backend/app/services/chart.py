@@ -1,7 +1,7 @@
 from app.schemas.birth import BirthInfo
 from app.schemas.compatibility import CompatibilityCharts
-from app.utils.natal_chart import build_natal_chart
 from app.utils.compatibility import compare_charts
+from app.utils.natal_chart import build_natal_chart
 
 
 class ChartService:

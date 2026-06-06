@@ -16,23 +16,25 @@ It includes:
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
 import swisseph as swe
+
+from app.constants import (
+    ASPECT_ANGLES,
+    EPHE_FOLDER,
+    HOUSE_SYSTEM,
+    ORBIS,
+    PLANETS,
+)
 from app.schemas.aspect import Aspect
 from app.schemas.chart import NatalChart
 from app.schemas.planet import PlanetPosition
 from app.utils.astro_math import (
-    normalize_angle,
-    get_sign,
     angle_difference,
-    determine_house,
     calculate_julian_day,
-)
-from app.constants import (
-    EPHE_FOLDER,
-    HOUSE_SYSTEM,
-    ORBIS,
-    ASPECT_ANGLES,
-    PLANETS,
+    determine_house,
+    get_sign,
+    normalize_angle,
 )
 
 
@@ -57,14 +59,16 @@ def calculate_planets(jd: float) -> list[PlanetPosition]:
 
         sign, degree = get_sign(longitude)
 
-        planets.append(PlanetPosition(
-            name=name,
-            longitude=longitude,
-            sign=sign,
-            degree_in_sign=degree,
-            is_retrograde=is_retrograde,
-            house=None,
-        ))
+        planets.append(
+            PlanetPosition(
+                name=name,
+                longitude=longitude,
+                sign=sign,
+                degree_in_sign=degree,
+                is_retrograde=is_retrograde,
+                house=None,
+            )
+        )
 
     return planets
 
@@ -141,12 +145,14 @@ def calculate_aspects(planets: list[PlanetPosition]) -> list[Aspect]:
                 orb = abs(diff - angle)
 
                 if orb <= ORBIS[aspect_name]:
-                    aspects.append(Aspect(
-                        planet1=p1.name,
-                        planet2=p2.name,
-                        aspect_type=aspect_name,
-                        orb=round(orb, 2),
-                    ))
+                    aspects.append(
+                        Aspect(
+                            planet1=p1.name,
+                            planet2=p2.name,
+                            aspect_type=aspect_name,
+                            orb=round(orb, 2),
+                        )
+                    )
 
     return aspects
 

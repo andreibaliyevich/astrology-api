@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+
 from app.api.routers import all_routers
 from app.utils.logging_system import logger
-
 
 app = FastAPI(
     title="Astrology API",

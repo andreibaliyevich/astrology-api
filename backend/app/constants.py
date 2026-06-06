@@ -1,8 +1,7 @@
 import swisseph as swe
 
-
 EPHE_FOLDER = "./ephe"  # Path to the folder with ephemeris
-HOUSE_SYSTEM = b'P'   # Placidus
+HOUSE_SYSTEM = b"P"  # Placidus
 
 ORBIS = {
     "conjunction": 8,
@@ -34,9 +33,18 @@ PLANETS = {
 }
 
 ZODIAC_SIGNS = [
-    "aries", "taurus", "gemini", "cancer",
-    "leo", "virgo", "libra", "scorpio",
-    "sagittarius", "capricorn", "aquarius", "pisces",
+    "aries",
+    "taurus",
+    "gemini",
+    "cancer",
+    "leo",
+    "virgo",
+    "libra",
+    "scorpio",
+    "sagittarius",
+    "capricorn",
+    "aquarius",
+    "pisces",
 ]
 
 HARMONIOUS = {"trine", "sextile"}

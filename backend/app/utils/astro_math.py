@@ -14,8 +14,10 @@ These functions do not depend on business logic and can be reused
 independently of natal chart or compatibility calculations.
 """
 
-from datetime import datetime, UTC
+from datetime import UTC, datetime
+
 import swisseph as swe
+
 from app.constants import ZODIAC_SIGNS
 
 
@@ -112,5 +114,5 @@ def calculate_julian_day(dt: datetime) -> float:
         dt_utc.year,
         dt_utc.month,
         dt_utc.day,
-        dt_utc.hour + dt_utc.minute / 60 + dt_utc.second / 3600
+        dt_utc.hour + dt_utc.minute / 60 + dt_utc.second / 3600,
     )

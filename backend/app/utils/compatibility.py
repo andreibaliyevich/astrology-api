@@ -12,17 +12,17 @@ It includes:
 - Final compatibility aggregation
 """
 
+from app.constants import (
+    ASPECT_ANGLES,
+    BLOCK_WEIGHTS,
+    CHALLENGING,
+    HARMONIOUS,
+    NEUTRAL,
+    ORBIS,
+)
 from app.schemas.chart import NatalChart
 from app.schemas.compatibility import CompatibilityInfo
 from app.utils.astro_math import angle_difference
-from app.constants import (
-    HARMONIOUS,
-    CHALLENGING,
-    NEUTRAL,
-    BLOCK_WEIGHTS,
-    ORBIS,
-    ASPECT_ANGLES,
-)
 
 
 def aspect_score(
@@ -77,7 +77,6 @@ def calculate_synastry_aspects(
 
     for p1 in chart1.planets:
         for p2 in chart2.planets:
-
             diff = angle_difference(p1.longitude, p2.longitude)
 
             for aspect_name, angle in ASPECT_ANGLES.items():
@@ -85,13 +84,15 @@ def calculate_synastry_aspects(
                 max_orb = ORBIS[aspect_name]
 
                 if orb <= max_orb:
-                    results.append((
-                        p1.name,
-                        p2.name,
-                        aspect_name,
-                        orb,
-                        max_orb,
-                    ))
+                    results.append(
+                        (
+                            p1.name,
+                            p2.name,
+                            aspect_name,
+                            orb,
+                            max_orb,
+                        )
+                    )
 
     return results
 
@@ -107,7 +108,7 @@ def evaluate_block(block_aspects):
     :rtype: float
     """
     total = 0
-    for (_, _, aspect_type, orb, max_orb) in block_aspects:
+    for _, _, aspect_type, orb, max_orb in block_aspects:
         total += aspect_score(aspect_type, orb, max_orb)
 
     if block_aspects:

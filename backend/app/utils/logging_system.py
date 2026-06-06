@@ -12,7 +12,6 @@ logger.error("Error message")
 
 import logging
 
-
 # Create a main logger named "app" and set the logging level to INFO
 logger = logging.getLogger("app")
 logger.setLevel(logging.INFO)
